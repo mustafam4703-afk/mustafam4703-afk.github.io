@@ -125,6 +125,109 @@
   .clip video { display: block; width: 100%; height: auto; aspect-ratio: 848 / 478; background: var(--ink); border-radius: 6px; }
   .clip figcaption { font-family: "Archivo", sans-serif; font-size: 0.8rem; color: var(--steel); margin-top: 8px; }
 
+
+
+  /* Stretch animation */
+
+  /* Diagram animation (off when the visitor prefers reduced motion) */
+  @media (prefers-reduced-motion: no-preference) {
+    .diagram .st { animation: lit 8s linear infinite; }
+    .diagram .st2 { animation-delay: 2s; }
+    .diagram .st3 { animation-delay: 4s; }
+    .diagram .st4 { animation-delay: 6s; }
+    .diagram .pk { animation: lit 3s linear infinite; }
+    .diagram .pk2 { animation-delay: 1s; }
+    .diagram .pk3 { animation: pulse 3s ease-in-out infinite; animation-delay: 2s; }
+    .diagram .flow { stroke-dasharray: 6 5; animation: flow 0.9s linear infinite; }
+    .diagram .flow.rev { animation-direction: reverse; }
+  }
+  @keyframes lit { 0%, 24% { fill: #BFE0DD; stroke: #0B6F6A; stroke-width: 2.5; } 25%, 100% { fill: #EEF2F4; stroke: #12202B; stroke-width: 1.5; } }
+  @keyframes pulse { 0%, 24% { opacity: 1; } 12% { opacity: 0.55; } 25%, 100% { opacity: 1; } }
+  @keyframes flow { to { stroke-dashoffset: -22; } }
+
+  .sim { margin: 12px 0 0; max-width: 560px; }
+  .sim svg { display: block; width: 100%; height: auto; border-radius: 6px; }
+  .sim figcaption { font-family: "Archivo", sans-serif; font-size: .8rem; color: var(--steel); margin-top: 8px; }
+  .sim .st-lab { font-family: "Archivo", sans-serif; font-size: 10px; font-weight: 600; fill: #4A5A66; }
+  .sim .ax { stroke: #4A5A66; stroke-width: 1; fill: none; }
+  .sim .tr1 { stroke: #0B6F6A; stroke-width: 2; fill: none; }
+  .sim .tr2 { stroke: #B7791F; stroke-width: 2; fill: none; }
+  .sim .tr3 { stroke: #12202B; stroke-width: 2; fill: none; }
+  .sim .tr4 { stroke: #8B5A9E; stroke-width: 2; fill: none; }
+  .sim .tr5 { stroke: #C4571A; stroke-width: 2; fill: none; }
+  .sim .tr6 { stroke: #3B5BA9; stroke-width: 2; fill: none; }
+  .sim .tbox { fill: #F4F7F9; stroke: #B9C6CE; stroke-width: 1; }
+  .sim .tval { font-family: "Archivo", sans-serif; font-size: 11px; font-weight: 700; fill: #12202B; }
+  .sim .tcap { font-family: "Archivo", sans-serif; font-size: 7.5px; font-weight: 600; fill: #4A5A66; }
+  .demo { padding: 36px 0; border-top: 1px solid var(--rule); }
+  .demo h3 { margin: 0 0 6px; }
+  .demo .meta { font-size: 0.9rem; color: var(--steel); margin: 0 0 14px; font-weight: 500; max-width: 90ch; }
+  .demo-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; margin: 0 0 10px; font: 600 .8rem "Archivo", sans-serif; color: var(--steel); }
+  .demo-bar button { font: 600 .78rem "Archivo", sans-serif; padding: 4px 10px; border: 1px solid #B9C6CE; background: #F4F7F9; color: var(--ink); border-radius: 999px; cursor: pointer; }
+  .demo-bar button[aria-pressed="true"] { background: var(--teal); border-color: var(--teal); color: #fff; }
+  .demo-bar .sim-tag { color: #9B2C2C; margin-left: auto; letter-spacing: .02em; }
+  .demo-hint { font: 500 .9rem "Archivo", sans-serif; color: var(--ink); background: #E1F0EE; border-left: 4px solid var(--teal); padding: 8px 12px; margin: 0 0 10px; border-radius: 0 4px 4px 0; min-height: 2.4em; max-width: none; }
+  .demo-top { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); gap: 12px; margin: 0 0 12px; align-items: stretch; }
+  .rigcard { margin: 0; background: #E1E8EC; border-radius: 6px; display: flex; align-items: center; }
+  .rigcard svg { display: block; width: 100%; height: auto; border-radius: 6px; }
+  .rg-t { font: 600 9.5px "Archivo", sans-serif; fill: #4A5A66; }
+  .rg-w { font: 700 9.5px "Archivo", sans-serif; fill: #fff; }
+  .rg-b { font: 700 11px "Archivo", sans-serif; fill: #12202B; paint-order: stroke; stroke: #E1E8EC; stroke-width: 3px; stroke-linejoin: round; }
+  .rg-h { paint-order: stroke; stroke: #E1E8EC; stroke-width: 3px; stroke-linejoin: round; }
+  .rg-m { font: 700 12px "Archivo", sans-serif; fill: #0B6F6A; }
+  .modecard { min-height: 16.2rem; background: #fff; border: 1px solid var(--rule); border-radius: 6px; padding: 12px 14px; font-family: "Archivo", sans-serif; display: flex; flex-direction: column; gap: 6px; }
+  .modecard h4 { margin: 0; font-size: 1.05rem; color: var(--teal); }
+  .modecard p { margin: 0; font-size: .82rem; line-height: 1.4; max-width: none; color: var(--ink); }
+  .modecard .fw { color: var(--steel); font-size: .76rem; }
+  .modecard .act { margin-top: auto; border-top: 1px dashed var(--rule); padding-top: 6px; font-size: .78rem; }
+  .modecard .act b { color: var(--ink); }
+  .tk { background: #d9d9d9; border: 1px solid #8f8f8f; border-radius: 4px; padding: 6px 8px 8px; font: 13px/1.25 "DejaVu Sans", "Segoe UI", Verdana, sans-serif; color: #1a1a1a; outline-offset: 2px; }
+  .tk:focus-visible { outline: 2px solid var(--teal); }
+  .tk .tkt { font-size: 11px; color: #444; padding: 2px 2px 6px; display: flex; justify-content: space-between; gap: 8px; }
+  .tk .cols { display: grid; grid-template-columns: 1.1fr 1fr .95fr; gap: 0 8px; }
+  .tk .col { display: flex; flex-direction: column; min-width: 0; }
+  .tk fieldset { border: 1px solid #a6a6a6; margin: 0 0 6px; padding: 3px 8px 7px; min-width: 0; }
+  .tk legend { font-weight: 700; padding: 0 4px; font-size: 12.5px; }
+  .tk .row { display: flex; flex-wrap: wrap; align-items: center; gap: 5px 8px; }
+  .tk button { font: 12px "DejaVu Sans", "Segoe UI", Verdana, sans-serif; color: #1a1a1a; background: #f0f0f0; border: 1px solid #9a9a9a; border-radius: 3px; padding: 4px 6px; cursor: pointer; }
+  .tk button:hover:not(:disabled) { background: #e4e9ee; }
+  .tk button:active:not(:disabled) { background: #cfd8e0; }
+  .tk button:disabled { color: #a3a3a3; background: #e8e8e8; border-color: #c4c4c4; cursor: default; }
+  .tk button:focus-visible { outline: 2px solid #0B6F6A; outline-offset: 1px; }
+  .tk input[type=text], .tk select { font: 12px "DejaVu Sans", "Segoe UI", Verdana, sans-serif; background: #fff; border: 1px solid #9a9a9a; border-radius: 2px; padding: 2px 4px; color: #1a1a1a; min-width: 0; }
+  .tk input[type=text] { width: 100%; }
+  .tk .cfg { display: grid; grid-template-columns: max-content minmax(56px, 1fr); gap: 4px 8px; align-items: center; }
+  .tk .cfg label { font-size: 12px; }
+  .tk .cfg .full { grid-column: 1 / -1; }
+  .tk .cfg .unl { grid-column: 2 / 3; }
+  .tk .modes { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
+  .tk .mb { border: 2px solid transparent; padding: 0; display: flex; border-radius: 3px; }
+  .tk .mb.on { border-color: #4CAF50; background: #4CAF50; }
+  .tk .mb button { flex: 1; min-width: 0; }
+  .tk .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; margin-bottom: 5px; }
+  .tk .tel { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; }
+  .tk .tel div { border: 1px solid #9a9a9a; border-style: inset; background: #e4e4e4; text-align: center; padding: 1px 2px 3px; min-width: 0; }
+  .tk .tel small { display: block; font-size: 9px; line-height: 1.15; color: #777; }
+  .tk .tel b { font-size: 13px; }
+  .tk .gr { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; align-items: center; }
+  .tk .gr .st { grid-column: 1 / -1; font-size: 11px; }
+  .tk .gr .full { grid-column: 1 / -1; }
+  .tk .grow { flex: 1; display: flex; flex-direction: column; margin-bottom: 0; }
+  .tk pre { margin: 0; flex: 1; background: #fff; border: 1px solid #9a9a9a; min-height: 120px; max-height: 150px; overflow-y: auto; padding: 4px 6px; font: 11.5px/1.35 "DejaVu Sans", "Segoe UI", Verdana, sans-serif; white-space: pre-wrap; word-break: break-word; }
+  .tk .hint-on { outline: 3px dashed #0B6F6A; outline-offset: 2px; }
+  @media (prefers-reduced-motion: no-preference) { .tk .hint-on { animation: hintpulse 1.4s ease-in-out infinite; } }
+  @keyframes hintpulse { 0%, 100% { outline-color: #0B6F6A; } 50% { outline-color: rgba(11,111,106,.25); } }
+  .demo-plots { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px; margin-top: 12px; }
+  .demo-plots .win { background: #fff; border: 1px solid #8f8f8f; border-radius: 4px; overflow: hidden; }
+  .demo-plots .wt { display: flex; justify-content: space-between; align-items: center; background: #d9d9d9; font: 600 11px "DejaVu Sans", Verdana, sans-serif; padding: 2px 6px; color: #333; }
+  .demo-plots .wt button { border: 0; background: transparent; font-size: 14px; line-height: 1; cursor: pointer; color: #333; padding: 0 2px; }
+  .demo-plots svg { display: block; width: 100%; height: auto; }
+  .demo-plots .empty { grid-column: 1 / -1; font: 500 .9rem "Archivo", sans-serif; color: var(--steel); padding: 12px; border: 1px dashed #B9C6CE; border-radius: 4px; margin: 0; max-width: none; }
+  .demo-note { font: .8rem "Archivo", sans-serif; color: var(--steel); margin: 12px 0 0; max-width: 90ch; }
+  @media (max-width: 1020px) { .tk .cols { grid-template-columns: 1fr 1fr; } .tk .col:nth-child(3) { grid-column: 1 / -1; } }
+  @media (max-width: 900px) { .demo-top { grid-template-columns: 1fr; } .modecard { min-height: 0; } }
+  @media (max-width: 620px) { .tk .cols { grid-template-columns: 1fr; } .tk .tel { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
   @media (max-width: 760px) {
     .two, .project { grid-template-columns: 1fr; }
     .hero-top { grid-template-columns: 1fr; }
@@ -251,10 +354,10 @@
         <figure class="diagram">
           <svg viewBox="0 0 320 190" role="img" aria-label="Diagram of a stretching cycle with four states: stretch, hold, release and rest, in a loop, fed by a load cell and a linear scale into an ESP32-S3.">
             <defs><marker id="ah1" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#4A5A66"/></marker></defs>
-            <rect class="box" x="12" y="14" width="86" height="34" rx="4"/><text x="55" y="35" text-anchor="middle">Stretch</text>
-            <rect class="box" x="222" y="14" width="86" height="34" rx="4"/><text x="265" y="35" text-anchor="middle">Hold</text>
-            <rect class="box" x="222" y="84" width="86" height="34" rx="4"/><text x="265" y="105" text-anchor="middle">Release</text>
-            <rect class="box" x="12" y="84" width="86" height="34" rx="4"/><text x="55" y="105" text-anchor="middle">Rest</text>
+            <rect class="box st st1" x="12" y="14" width="86" height="34" rx="4"/><text x="55" y="35" text-anchor="middle">Stretch</text>
+            <rect class="box st st2" x="222" y="14" width="86" height="34" rx="4"/><text x="265" y="35" text-anchor="middle">Hold</text>
+            <rect class="box st st3" x="222" y="84" width="86" height="34" rx="4"/><text x="265" y="105" text-anchor="middle">Release</text>
+            <rect class="box st st4" x="12" y="84" width="86" height="34" rx="4"/><text x="55" y="105" text-anchor="middle">Rest</text>
             <path class="arrow" d="M98 31 H222" marker-end="url(#ah1)"/>
             <path class="arrow" d="M265 48 V84" marker-end="url(#ah1)"/>
             <path class="arrow" d="M222 101 H98" marker-end="url(#ah1)"/>
@@ -273,25 +376,184 @@
           <ul>
             <li>Stepper control on dedicated hardware peripherals, so step timing stays jitter-free whatever the processor is doing.</li>
             <li>Load cell with a 24-bit amplifier, plus a glass linear scale decoded in hardware for ±10 µm displacement accuracy.</li>
-            <li>Python GUI with live telemetry, six real-time graphs and CSV export.</li>
+            <li>Python GUI (Tkinter and matplotlib) with a live telemetry panel, six real-time graphs (strain, stress, stress against strain, motor speed, force, displacement), stress calculated from force and sample area, and CSV export.</li>
             <li>Found and documented a race condition between a motion pulse and a stop command, with a handover write-up of the fix.</li>
           </ul>
-          <p><a href="https://github.com/mustafam4703-afk/Dielectric-Elastomer-Generator-Mechanical-Rig-Control-Code">Control code on GitHub</a></p>
+          <p><a href="https://github.com/mustafam4703-afk/Dielectric-Elastomer-Generator-Mechanical-Rig-Control-Code">Control code and Python GUI on GitHub</a></p>
+          <figure class="sim" id="simfig">
+            <svg id="simsvg" viewBox="0 0 480 400" role="img" aria-labelledby="sim-cap">
+              <rect x="0" y="0" width="480" height="400" fill="#E1E8EC"/>
+              <g id="simrig">
+                <rect x="30" y="16" width="14" height="48" rx="2" fill="#12202B"/>
+                <rect id="simsample" x="44" y="29" width="240" height="22" rx="3" fill="#B7791F" fill-opacity="0.35" stroke="#B7791F" stroke-width="2"/>
+                <rect id="simclamp" x="284" y="16" width="14" height="48" rx="2" fill="#12202B"/>
+                <text x="37" y="78" text-anchor="middle" class="st-lab">Fixed</text>
+                <text id="simclamplab" x="291" y="78" text-anchor="middle" class="st-lab">Moving clamp</text>
+              </g>
+              <text x="470" y="14" text-anchor="end" class="st-lab" fill="#9B2C2C" style="fill:#9B2C2C">SIMULATED DATA – DEMO ONLY</text>
+              <g id="simtel"></g>
+              <g id="simplots"></g>
+            </svg>
+            <figcaption id="sim-cap">Simulated data for demonstration only, not real measurements: a made-up sample stretched by 25% at 0.2 Hz, with the live telemetry panel and all six plots my GUI draws, animated together.</figcaption>
+          </figure>
         </div>
       </article>
 
+      <div class="demo" id="demo">
+        <h3>Try the control GUI: interactive simulation</h3>
+        <p class="meta">A working imitation of my rig's control GUI, with the rig itself animated above it. Every number and movement is simulated for demonstration only, not real measurements, and no rig is attached.</p>
+        <div class="demo-bar" role="group" aria-label="Demo controls (not part of the real GUI)">
+          <span>Demo controls:</span>
+          <span>Speed
+            <button type="button" data-spd="1" aria-pressed="false">1×</button>
+            <button type="button" data-spd="3" aria-pressed="true">3×</button>
+            <button type="button" data-spd="10" aria-pressed="false">10×</button>
+          </span>
+          <button type="button" id="d-hints" aria-pressed="true">Hints on</button>
+          <button type="button" id="d-reset">Reset demo</button>
+          <span class="sim-tag">SIMULATED DATA – DEMO ONLY</span>
+        </div>
+        <p class="demo-hint" id="d-hint" aria-live="polite"></p>
+        <div class="demo-top">
+          <figure class="rigcard">
+            <svg id="d-rig" viewBox="0 0 720 240" role="img" aria-label="Animated drawing of the tensile rig: a DEG sample held between a fixed clamp on a load cell and a moving clamp driven by a ball screw and stepper motor, with a glass linear scale measuring displacement.">
+              <defs>
+                <pattern id="rg-thr" width="9" height="12" patternUnits="userSpaceOnUse"><path d="M0 12 L9 0" stroke="#4A5A66" stroke-width="1.5"/></pattern>
+                <pattern id="rg-scl" width="6" height="10" patternUnits="userSpaceOnUse"><path d="M0.5 0 V10" stroke="#12202B" stroke-width="1"/></pattern>
+              </defs>
+              <rect width="720" height="240" rx="6" fill="#E1E8EC"/>
+              <text id="rg-mode" x="14" y="20" class="rg-m">MODE: Idle</text>
+              <g id="rg-rec" style="display:none"><circle cx="118" cy="16" r="4.5" fill="#C53030"/><text x="127" y="20" class="rg-b" style="fill:#C53030">REC</text></g>
+              <text x="706" y="16" text-anchor="end" class="rg-t" style="fill:#9B2C2C">SIMULATED DATA – DEMO ONLY</text>
+              <text id="rg-cyc" x="706" y="32" text-anchor="end" class="rg-b"></text>
+              <rect x="20" y="214" width="680" height="16" rx="2" fill="#A9B5BE"/>
+              <text x="28" y="226" class="rg-t">Aluminium C-beam frame</text>
+              <rect x="140" y="176" width="500" height="6" fill="#5C6B76"/>
+              <text x="146" y="173" class="rg-t">Linear rail</text>
+              <rect x="140" y="188" width="500" height="10" fill="#fff" stroke="#8A97A1"/>
+              <rect x="140" y="188" width="500" height="10" fill="url(#rg-scl)"/>
+              <text x="146" y="209" class="rg-t">Glass linear scale (read head moves with the clamp)</text>
+              <rect x="140" y="150" width="464" height="12" fill="#C9D2D8" stroke="#8A97A1"/>
+              <rect id="rg-screw" x="140" y="150" width="464" height="12" fill="url(#rg-thr)"/>
+              <text x="146" y="146" class="rg-t">Ball screw (5 mm lead)</text>
+              <rect x="604" y="153" width="22" height="6" fill="#5C6B76"/>
+              <rect x="626" y="128" width="76" height="56" rx="4" fill="#12202B"/>
+              <text x="646" y="146" text-anchor="middle" class="rg-w">Stepper</text><text x="646" y="158" text-anchor="middle" class="rg-w">motor</text>
+              <circle cx="678" cy="156" r="15" fill="#2D3E4B" stroke="#fff" stroke-width="1"/>
+              <line id="rg-shaft" x1="678" y1="156" x2="678" y2="143" stroke="#F6AD55" stroke-width="3" stroke-linecap="round"/>
+              <rect x="36" y="30" width="14" height="184" fill="#7C8A95"/>
+              <rect x="50" y="54" width="62" height="32" rx="3" fill="#12202B"/>
+              <text x="81" y="74" text-anchor="middle" class="rg-w">Load cell</text>
+              <rect id="rg-fbar" x="50" y="90" width="0" height="6" fill="#DD6B20"/>
+              <rect x="50" y="90" width="62" height="6" fill="none" stroke="#8A97A1"/>
+              <text id="rg-f" x="81" y="108" text-anchor="middle" class="rg-b"></text>
+              <rect x="112" y="38" width="14" height="64" rx="2" fill="#12202B"/>
+              <rect id="rg-film" x="126" y="47" width="225" height="46" fill="#B7791F" fill-opacity="0.3" stroke="#B7791F" stroke-width="2"/>
+              <rect id="rg-elec" x="150" y="53" width="177" height="34" fill="#1B1B1B" fill-opacity="0.55"/>
+              <g id="rg-grid"></g>
+              <g id="rg-mv">
+                <rect x="0" y="38" width="14" height="64" rx="2" fill="#12202B"/>
+                <rect x="1" y="102" width="12" height="24" fill="#5C6B76"/>
+                <rect x="-12" y="124" width="40" height="54" rx="3" fill="#8A97A1" stroke="#4A5A66"/>
+                <rect x="-4" y="147" width="24" height="18" fill="#4A5A66"/>
+                <rect x="-14" y="178" width="44" height="22" rx="2" fill="#2F855A"/>
+                <text x="8" y="192" text-anchor="middle" class="rg-w" style="font-size:7.5px">read head</text>
+                <text id="rg-x" x="38" y="124" class="rg-b"></text><text id="rg-x2" x="38" y="137" class="rg-b"></text>
+                <text id="rg-dir" x="30" y="74" class="rg-m rg-h"></text>
+                <text id="rg-step" x="7" y="26" text-anchor="middle" class="rg-m rg-h" style="display:none"></text>
+              </g>
+              <g id="rg-ghosts" pointer-events="none">
+                <line id="rg-g0" x1="0" y1="38" x2="0" y2="126" stroke="#4A5A66" stroke-width="1.5" stroke-dasharray="4 3"/>
+                <text id="rg-g0t" x="0" y="34" text-anchor="end" class="rg-t rg-h">initial </text>
+                <line id="rg-g1" x1="0" y1="38" x2="0" y2="126" stroke="#0B6F6A" stroke-width="1.5" stroke-dasharray="4 3"/>
+                <text id="rg-g1t" x="0" y="34" text-anchor="start" class="rg-t rg-h" style="fill:#0B6F6A"> stretched target</text>
+              </g>
+              <text x="240" y="108" text-anchor="middle" class="rg-t rg-h" id="rg-lab">DEG sample (film + electrode patch)</text>
+            </svg>
+          </figure>
+          <div class="modecard" id="d-mode" aria-live="polite">
+            <h4 id="d-mode-title"></h4>
+            <p id="d-mode-text"></p>
+            <p class="fw" id="d-mode-fw"></p>
+            <p class="act" id="d-act"></p>
+          </div>
+        </div>
+        <div class="tk" id="tk" tabindex="0" aria-label="Simulated control GUI. After connecting, the keyboard shortcuts shown on the buttons work while this window is focused.">
+          <div class="tkt"><span>Material Strain Tester Controller</span><span>(simulation)</span></div>
+          <div class="cols">
+            <div class="col">
+              <fieldset><legend>Connection</legend>
+                <div class="row">
+                  <label for="d-port">COM Port:</label>
+                  <select id="d-port"><option>/dev/ttyUSB0 (demo)</option><option>COM3 (demo)</option></select>
+                  <button type="button" id="d-refresh">⟳ Refresh</button>
+                  <button type="button" id="d-connect">Connect</button>
+                </div>
+              </fieldset>
+              <fieldset><legend>Configuration (Press 'c' to Apply)</legend>
+                <div class="cfg">
+                  <label for="f-len">Unstretched Length (cm):</label><input type="text" id="f-len" value="15.0" inputmode="decimal">
+                  <label for="f-strain">Percentage Strain (%):</label><input type="text" id="f-strain" value="25.0" inputmode="decimal">
+                  <label for="f-area">Area (mm²):</label><input type="text" id="f-area" value="2.0" inputmode="decimal">
+                  <label for="f-freq">Cycle Frequency (Hz):</label><input type="text" id="f-freq" value="0.2" inputmode="decimal">
+                  <label for="f-cyc">Number of Cycles:</label><input type="text" id="f-cyc" value="3" inputmode="numeric">
+                  <label class="unl"><input type="checkbox" id="f-unl"> Unlimited</label>
+                  <label for="f-mspd">Manual Speed (steps/s):</label><input type="text" id="f-mspd" value="400" inputmode="decimal">
+                  <label for="f-macc">Manual Accel (steps/s²):</label><input type="text" id="f-macc" value="400" inputmode="decimal">
+                  <label for="f-aacc">Auto Accel (steps/s²):</label><input type="text" id="f-aacc" value="4000" inputmode="decimal">
+                  <button type="button" class="full" id="d-config">Apply Configuration</button>
+                </div>
+              </fieldset>
+            </div>
+            <div class="col">
+              <fieldset><legend>Operating Modes</legend>
+                <div class="modes">
+                  <span class="mb" id="mb-manual"><button type="button" id="b-m">Step ('m')</button></span>
+                  <span class="mb" id="mb-jog"><button type="button" id="b-j">Jog ('j')</button></span>
+                  <span class="mb" id="mb-reach"><button type="button" id="b-p">Reach: → Stretched ('p')</button></span>
+                  <span class="mb" id="mb-auto"><button type="button" id="b-x">Auto ('x')</button></span>
+                </div>
+              </fieldset>
+              <fieldset><legend>Step-manual/Jog Controls &amp; Calibration</legend>
+                <div class="grid2"><button type="button" id="b-a">&lt; Backward ('a')</button><button type="button" id="b-d">Forward ('d') &gt;</button></div>
+                <div class="grid2" style="margin-bottom:0"><button type="button" id="b-s">Stop Jog or Reach ('s')</button><button type="button" id="b-r">Reset Encoder ('r')</button><button type="button" id="b-z">Reset Cycles ('z')</button><button type="button" id="b-t">Tare Load Cell ('t')</button></div>
+              </fieldset>
+              <fieldset style="margin-bottom:0"><legend>Live Telemetry</legend>
+                <div class="tel" id="d-tel">
+                  <div><small>Displacement (cm)</small><b>--</b></div><div><small>Strain (ε)</small><b>--</b></div><div><small>Force (N)</small><b>--</b></div>
+                  <div><small>Stress (MPa)</small><b>--</b></div><div><small>Motor Speed (mm/min)</small><b>--</b></div><div><small>Cycles</small><b>--</b></div>
+                </div>
+              </fieldset>
+            </div>
+            <div class="col">
+              <fieldset><legend>Graph</legend>
+                <div class="gr">
+                  <span class="st" id="d-start">Recording start time: --:--:--</span>
+                  <button type="button" class="full" id="d-csv">💾 Save Graph Data to CSV</button>
+                  <button type="button" data-fig="1">Strain vs Time</button><button type="button" data-fig="2">Stress vs Time</button>
+                  <button type="button" data-fig="6">Force vs Time</button><button type="button" data-fig="7">Displacement vs Time</button>
+                  <button type="button" data-fig="3">Stress vs Strain</button><button type="button" data-fig="4">Motor Speed vs Time</button>
+                </div>
+              </fieldset>
+              <fieldset class="grow"><legend>ESP32 Output</legend><pre id="d-out" aria-label="Simulated ESP32 output"></pre></fieldset>
+            </div>
+          </div>
+        </div>
+        <div class="demo-plots" id="d-plots" aria-label="Graph windows opened with the Show buttons"></div>
+        <p class="demo-note">Simplified simulation of my GUI and firmware logic. It starts already connected with the default settings, so applying a configuration is optional. The buttons lock and unlock as in the real GUI, Auto only records while it runs, and the telemetry and graphs update every 100 ms of simulated time. The rig drawing follows the real design (fixed clamp with an in-line load cell, moving clamp on a ball-nut guide mount, 5 mm-lead ball screw, stepper motor, glass linear scale) but is illustrative and not to scale. The stress curve is a made-up material model, and the simulated sample has a fixed 2 mm² cross-section, so changing Area changes the stress but not the force. Click the GUI window to use the keyboard shortcuts.</p>
+      </div>
+
       <article class="project">
         <figure class="diagram">
-          <svg viewBox="0 0 320 170" role="img" aria-label="Diagram of a two-link planar arm whose end effector follows a dashed circular path.">
-            <defs><marker id="ah6" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#0B6F6A"/></marker></defs>
-            <circle cx="214" cy="70" r="46" fill="none" stroke="#B7791F" stroke-width="2" stroke-dasharray="5 4"/>
-            <path class="accent" d="M214 24 A46 46 0 0 1 260 70" marker-end="url(#ah6)"/>
-            <path d="M60 140 L128 88 L196 52" fill="none" stroke="#12202B" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+          <svg id="armsvg" viewBox="0 0 320 170" role="img" aria-label="Diagram of a two-link planar arm whose end effector follows a dashed circular path.">
+            <circle cx="160" cy="80" r="32" fill="none" stroke="#B7791F" stroke-width="2" stroke-dasharray="5 4"/>
+            <path id="armLinks" d="M60 140 L104.5 67.6 L180.6 55.5" fill="none" stroke="#12202B" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
             <circle cx="60" cy="140" r="9" fill="#12202B"/>
-            <circle cx="128" cy="88" r="7" fill="#EEF2F4" stroke="#12202B" stroke-width="3"/>
-            <circle cx="196" cy="52" r="6" fill="#0B6F6A"/>
+            <circle id="armElbow" cx="104.5" cy="67.6" r="7" fill="#EEF2F4" stroke="#12202B" stroke-width="3"/>
+            <circle id="armTip" cx="180.6" cy="55.5" r="6" fill="#0B6F6A"/>
             <rect x="36" y="150" width="48" height="8" rx="2" fill="#4A5A66"/>
-            <text class="small" x="214" y="140" text-anchor="middle">Desired circular path</text>
+            <text class="small" x="262" y="76" text-anchor="middle">Desired</text>
+            <text class="small" x="262" y="89" text-anchor="middle">circular path</text>
           </svg>
           <figcaption>Simplified diagram: a 2-link arm tracking a circle.</figcaption>
         </figure>
@@ -316,8 +578,8 @@
             <text class="small" x="16" y="15">100+ unit tests</text>
             <rect class="box" x="22" y="38" width="104" height="36" rx="4"/><text x="74" y="55" text-anchor="middle">Joystick</text><text x="74" y="67" text-anchor="middle">emulator (C++)</text>
             <rect class="box" x="204" y="38" width="108" height="36" rx="4"/><text x="258" y="55" text-anchor="middle">CMM</text><text x="258" y="67" text-anchor="middle">controller</text>
-            <path class="accent2" d="M126 51 H204" marker-end="url(#ah2)"/>
-            <path class="accent2" d="M204 63 H126" marker-end="url(#ah2)"/>
+            <path class="accent2 flow" d="M126 51 H204" marker-end="url(#ah2)"/>
+            <path class="accent2 flow" d="M204 63 H126" marker-end="url(#ah2)"/>
             <text class="small" x="165" y="44" text-anchor="middle">RS-485</text>
             <rect class="box" x="60" y="118" width="200" height="34" rx="4"/><text x="160" y="139" text-anchor="middle">Bench: real CMM controller</text>
             <path class="arrow" d="M74 74 V118"/><path class="arrow" d="M258 74 V118"/>
@@ -341,9 +603,9 @@
       <article class="project">
         <figure class="diagram">
           <svg viewBox="0 0 320 120" role="img" aria-label="Diagram of a serial packet: a frame made of header, payload and checksum fields, with the checksum verified by the receiver.">
-            <rect class="box" x="10" y="30" width="70" height="40" rx="3"/><text x="45" y="54" text-anchor="middle">Header</text>
-            <rect class="box" x="80" y="30" width="150" height="40" rx="3"/><text x="155" y="54" text-anchor="middle">Payload</text>
-            <rect x="230" y="30" width="80" height="40" rx="3" fill="#0B6F6A"/><text x="270" y="54" text-anchor="middle" style="fill:#fff">XOR check</text>
+            <rect class="box pk" x="10" y="30" width="70" height="40" rx="3"/><text x="45" y="54" text-anchor="middle">Header</text>
+            <rect class="box pk pk2" x="80" y="30" width="150" height="40" rx="3"/><text x="155" y="54" text-anchor="middle">Payload</text>
+            <rect class="pk3" x="230" y="30" width="80" height="40" rx="3" fill="#0B6F6A"/><text x="270" y="54" text-anchor="middle" style="fill:#fff">XOR check</text>
             <path class="arrow" d="M270 70 V92"/>
             <text class="small" x="270" y="108" text-anchor="middle">receiver verifies</text>
             <text class="small" x="10" y="22">Illustrative frame layout</text>
@@ -369,7 +631,7 @@
             <path class="arrow" d="M70 48 H92" marker-end="url(#ah7)"/>
             <path class="arrow" d="M162 48 H184" marker-end="url(#ah7)"/>
             <path class="arrow" d="M246 48 H262" marker-end="url(#ah7)"/>
-            <path class="accent2" d="M287 66 V112 H127 V70" marker-end="url(#ah7)"/>
+            <path class="accent2 flow" d="M287 66 V112 H127 V70" marker-end="url(#ah7)"/>
             <text class="small" x="207" y="106" text-anchor="middle">Encoder feedback</text>
           </svg>
           <figcaption>Simplified diagram: the control loop.</figcaption>
@@ -394,9 +656,9 @@
             <ellipse class="box" cx="52" cy="104" rx="42" ry="20"/><text x="52" y="108" text-anchor="middle">/odom</text>
             <rect x="130" y="52" width="86" height="46" rx="6" fill="#0B6F6A"/><text x="173" y="72" text-anchor="middle" style="fill:#fff">Avoidance</text><text x="173" y="85" text-anchor="middle" style="fill:#fff">node</text>
             <ellipse class="box" cx="274" cy="75" rx="40" ry="20"/><text x="274" y="79" text-anchor="middle">/cmd_vel</text>
-            <path class="arrow" d="M92 44 L130 62" marker-end="url(#ah4)"/>
-            <path class="arrow" d="M92 98 L130 88" marker-end="url(#ah4)"/>
-            <path class="arrow" d="M216 75 H234" marker-end="url(#ah4)"/>
+            <path class="arrow flow" d="M92 44 L130 62" marker-end="url(#ah4)"/>
+            <path class="arrow flow" d="M92 98 L130 88" marker-end="url(#ah4)"/>
+            <path class="arrow flow" d="M216 75 H234" marker-end="url(#ah4)"/>
           </svg>
           <figcaption>Simplified diagram: ROS 2 topics and the avoidance node.</figcaption>
         </figure>
@@ -421,13 +683,13 @@
             <path class="accent" d="M280 132 V28" marker-end="url(#ah5)"/>
             <path class="accent" d="M280 22 H176" marker-end="url(#ah5)"/>
             <path class="accent" d="M170 22 V126" marker-end="url(#ah5)"/>
-            <circle cx="170" cy="132" r="6" fill="#B7791F"/>
+            <circle cx="170" cy="132" r="6" fill="#B7791F"><animateMotion dur="8s" repeatCount="indefinite" path="M0 0 H110 V-110 H0 Z"/></circle>
             <rect class="box" x="10" y="44" width="110" height="62" rx="4"/>
             <text x="65" y="68" text-anchor="middle">GUI controller</text>
             <text class="small" x="65" y="84" text-anchor="middle">ROS 2 package</text>
             <text class="small" x="65" y="97" text-anchor="middle">sim and real robot</text>
           </svg>
-          <figcaption>Simplified diagram: GUI control and square-path driving.</figcaption>
+          <figcaption>Simplified diagram: GUI control and the intended square path.</figcaption>
         </figure>
         <div>
           <h3>Leo Rover software, MSc team project</h3>
@@ -528,6 +790,520 @@
     requestAnimationFrame(frame);
   }
   requestAnimationFrame(frame);
+})();
+</script>
+
+<script>
+(function () {
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) {
+    var all = document.querySelectorAll('.diagram svg');
+    for (var i = 0; i < all.length; i++) { if (all[i].pauseAnimations) all[i].pauseAnimations(); }
+    return;
+  }
+  var svg = document.getElementById('armsvg');
+  var links = document.getElementById('armLinks'), elbow = document.getElementById('armElbow'), tip = document.getElementById('armTip');
+  if (!svg || !links || !elbow || !tip) return;
+  var L1 = 85, L2 = 77, BX = 60, BY = 140, CX = 160, CY = 80, R = 32;
+  function pose(th) {
+    var tx = CX + R * Math.cos(th), ty = CY + R * Math.sin(th);
+    var dx = tx - BX, dy = ty - BY;
+    var c2 = (dx * dx + dy * dy - L1 * L1 - L2 * L2) / (2 * L1 * L2);
+    c2 = Math.max(-1, Math.min(1, c2));
+    var best = null;
+    [1, -1].forEach(function (sg) {
+      var q2 = sg * Math.acos(c2);
+      var q1 = Math.atan2(dy, dx) - Math.atan2(L2 * Math.sin(q2), L1 + L2 * Math.cos(q2));
+      var ex = BX + L1 * Math.cos(q1), ey = BY + L1 * Math.sin(q1);
+      if (!best || ey < best.ey) best = { ex: ex, ey: ey };
+    });
+    links.setAttribute('d', 'M' + BX + ' ' + BY + ' L' + best.ex.toFixed(1) + ' ' + best.ey.toFixed(1) + ' L' + tx.toFixed(1) + ' ' + ty.toFixed(1));
+    elbow.setAttribute('cx', best.ex.toFixed(1)); elbow.setAttribute('cy', best.ey.toFixed(1));
+    tip.setAttribute('cx', tx.toFixed(1)); tip.setAttribute('cy', ty.toFixed(1));
+  }
+  var visible = true, start = null;
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (e) { visible = e[0].isIntersecting; }).observe(svg);
+  }
+  function frame(ts) {
+    if (start === null) start = ts;
+    if (visible) pose(-Math.PI / 2 + ((ts - start) / 8000) * 2 * Math.PI);
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+</script>
+
+<script>
+(function () {
+  var svg = document.getElementById('simsvg');
+  if (!svg) return;
+  var NS = 'http://www.w3.org/2000/svg';
+  var LMAX = 3.75, PERIOD = 5, L0 = 15, E = 0.35, AREA = 2, WIN = 10;
+  function ext(t) { var ph = ((t % PERIOD) + PERIOD) % PERIOD / PERIOD; return (ph < 0.5 ? 2 * ph : 2 * (1 - ph)) * LMAX; }
+  function vel(t) { return (ext(t + 0.01) - ext(t)) / 0.01; }
+  function stress(t) {
+    var x = ext(t), e = x / L0;
+    return Math.max(E * e * (1 + 3 * e) + 0.12 * (vel(t) / L0), 0);
+  }
+  var F = {
+    disp:  function (t) { return ext(t); },
+    strain: function (t) { return ext(t) / L0; },
+    stress: stress,
+    speed: function (t) { return vel(t) * 600; },
+    force: function (t) { return stress(t) * AREA; }
+  };
+  var W = 136, H = 70, g = document.getElementById('simplots'), tg = document.getElementById('simtel');
+  var cols = [14, 172, 330], rows = [190, 306];
+  var plots = [
+    {t: 'Strain vs time',       yl: 'ε',    xl: 'Time (s)',   x: F.strain, lo: 0,     hi: 0.28},
+    {t: 'Stress vs time',       yl: 'MPa',       xl: 'Time (s)',   x: null, y: F.stress, lo: 0, hi: 0.18},
+    {t: 'Stress vs strain',     yl: 'MPa',       xl: 'Strain (ε)', loop: true, lo: 0, hi: 0.18},
+    {t: 'Motor speed vs time',  yl: 'mm/min',    xl: 'Time (s)',   y: F.speed,  lo: -1000, hi: 1000},
+    {t: 'Force vs time',        yl: 'N',         xl: 'Time (s)',   y: F.force,  lo: 0, hi: 0.36},
+    {t: 'Displacement vs time', yl: 'cm',        xl: 'Time (s)',   y: F.disp,   lo: 0, hi: 4.1}
+  ];
+  plots[0].y = F.strain;
+  function el(parent, name, attrs, text) {
+    var n = document.createElementNS(NS, name);
+    for (var k in attrs) n.setAttribute(k, attrs[k]);
+    if (text) n.textContent = text;
+    parent.appendChild(n); return n;
+  }
+  plots.forEach(function (p, i) {
+    p.X = cols[i % 3]; p.Y0 = rows[Math.floor(i / 3)];
+    el(g, 'text', {x: p.X, y: p.Y0 - 8, 'class': 'st-lab'}, p.t);
+    el(g, 'path', {'class': 'ax', d: 'M' + p.X + ' ' + p.Y0 + ' V' + (p.Y0 + H) + ' H' + (p.X + W)});
+    if (p.lo < 0) el(g, 'path', {'class': 'ax', d: 'M' + p.X + ' ' + (p.Y0 + H / 2) + ' H' + (p.X + W), 'stroke-dasharray': '2 3', opacity: 0.6});
+    p.path = el(g, 'path', {'class': 'tr' + (i + 1)});
+    el(g, 'text', {x: p.X + W, y: p.Y0 + H + 12, 'text-anchor': 'end', 'class': 'st-lab'}, p.xl);
+    if (i !== 3 && i !== 5) el(g, 'text', {x: p.X + W, y: p.Y0 - 8, 'text-anchor': 'end', 'class': 'st-lab', opacity: 0.8}, '(' + p.yl + ')');
+  });
+  var dot = el(g, 'circle', {r: 3.5, fill: '#0B6F6A'});
+  var tel = [
+    {c: 'Displacement (cm)', f: function (t) { return ext(t).toFixed(3); }},
+    {c: 'Strain (ε)',      f: function (t) { return F.strain(t).toFixed(4); }},
+    {c: 'Force (N)',         f: function (t) { return F.force(t).toFixed(3); }},
+    {c: 'Stress (MPa)',      f: function (t) { return stress(t).toFixed(4); }},
+    {c: 'Speed (mm/min)',    f: function (t) { return F.speed(t).toFixed(0); }},
+    {c: 'Cycles',            f: function (t) { return String(Math.floor(t / PERIOD)); }}
+  ];
+  tel.forEach(function (b, i) {
+    var x = 15 + i * 76;
+    el(tg, 'rect', {x: x, y: 96, width: 70, height: 32, rx: 3, 'class': 'tbox'});
+    el(tg, 'text', {x: x + 35, y: 108, 'text-anchor': 'middle', 'class': 'tcap'}, b.c);
+    b.v = el(tg, 'text', {x: x + 35, y: 122, 'text-anchor': 'middle', 'class': 'tval'});
+  });
+  var sample = document.getElementById('simsample'), clamp = document.getElementById('simclamp');
+  var lab = document.getElementById('simclamplab');
+  function py(p, v) { return (p.Y0 + H - (v - p.lo) / (p.hi - p.lo) * H).toFixed(1); }
+  function draw(t) {
+    var x = ext(t), lam = 1 + x / L0, len = 240 * lam, h = 22 / Math.sqrt(lam), i, k, tt, d, p, n;
+    sample.setAttribute('width', len.toFixed(1)); sample.setAttribute('height', h.toFixed(1)); sample.setAttribute('y', (40 - h / 2).toFixed(1));
+    clamp.setAttribute('x', (44 + len).toFixed(1)); lab.setAttribute('x', (51 + len).toFixed(1));
+    for (k = 0; k < plots.length; k++) {
+      p = plots[k]; d = '';
+      if (p.loop) {
+        for (i = 0; i <= 50; i++) {
+          tt = t - PERIOD + PERIOD * i / 50;
+          d += (i ? 'L' : 'M') + (p.X + F.strain(tt) / 0.28 * W).toFixed(1) + ' ' + py(p, stress(tt));
+        }
+      } else {
+        for (i = 0; i <= 100; i++) {
+          tt = t - WIN + WIN * i / 100;
+          d += (i ? 'L' : 'M') + (p.X + W * i / 100).toFixed(1) + ' ' + py(p, p.y(tt));
+        }
+      }
+      p.path.setAttribute('d', d);
+    }
+    dot.setAttribute('cx', (plots[2].X + F.strain(t) / 0.28 * W).toFixed(1)); dot.setAttribute('cy', py(plots[2], stress(t)));
+    for (n = 0; n < tel.length; n++) tel[n].v.textContent = tel[n].f(t);
+  }
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) { draw(12.5); return; }
+  var visible = true, t0 = null;
+  if ('IntersectionObserver' in window) new IntersectionObserver(function (e) { visible = e[0].isIntersecting; }).observe(svg);
+  function frame(ts) { if (t0 === null) t0 = ts; if (visible) draw(10 + (ts - t0) / 1000); requestAnimationFrame(frame); }
+  draw(12.5); requestAnimationFrame(frame);
+})();
+
+(function () {
+  var tk = document.getElementById('tk');
+  if (!tk) return;
+  var $ = function (id) { return document.getElementById(id); };
+  var STEPS_PER_CM = 407, SIM_AREA = 2, E = 0.35, STEP_CM = 50 / STEPS_PER_CM;
+  var S, cfg, speedMult = 3, hintsOn = true, openFigs = [], timers = [], lastTs = null, visible = true;
+
+  var FIGS = {
+    1: {t: 'Strain vs Time', xl: 'Time (s)', yl: 'Strain (ε)', c: '#1f3fff', x: 'time', y: 'strain'},
+    2: {t: 'Stress vs Time', xl: 'Time (s)', yl: 'Stress (MPa)', c: '#d62728', x: 'time', y: 'stress'},
+    3: {t: 'Stress vs Strain', xl: 'Strain (ε)', yl: 'Stress (MPa)', c: '#2ca02c', x: 'strain', y: 'stress'},
+    4: {t: 'Motor Speed vs Time', xl: 'Time (s)', yl: 'Motor Speed (mm/min)', c: '#c020c0', x: 'time', y: 'speed'},
+    6: {t: 'Force vs Time', xl: 'Time (s)', yl: 'Force (N)', c: '#ff8c00', x: 'time', y: 'force'},
+    7: {t: 'Displacement vs Time', xl: 'Time (s)', yl: 'Displacement (cm)', c: '#7b2d8e', x: 'time', y: 'disp'}
+  };
+
+
+  function mdesc(m) {
+    var t = T().toFixed(2), a = autoCm().toFixed(2), sp = manCm().toFixed(2), st = (STEP_CM * 10).toFixed(1);
+    var D = {
+      idle: ['Idle', 'Nothing is moving and no data is being recorded. The simulated ESP32 waits for a command. Pick an operating mode, or press one of the keys shown on the buttons.',
+        'Firmware: operatingMode = IDLE. The load cell and glass scale are still read and sent to the GUI every 100 ms, so the telemetry boxes keep updating.'],
+      manual: ["Step mode ('m')", 'For positioning the clamp precisely while mounting a sample. Each Backward (\'a\') or Forward (\'d\') press moves the clamp by 50 motor steps, about ' + st + ' mm. Use it to take up the slack, then tare the load cell.',
+        'Firmware: MANUAL mode. \'a\' / \'d\' subtract or add 50 steps to the target and call moveTo() at the manual speed and acceleration. Pressing \'m\' again returns to Idle.'],
+      jog: ["Jog mode ('j')", 'Runs the motor continuously in one direction: \'a\' backward, \'d\' forward, until you press Stop (\'s\'). Good for moving the clamp a long way quickly (the manual speed is about ' + sp + ' cm/s here).',
+        'Firmware: JOG mode. \'a\' / \'d\' call runBackward() / runForward(); \'s\' calls stopMove(). Pressing \'j\' again returns to Idle.'],
+      reach: ["Reach ('p')", 'Drives the clamp to the stretched position, which is the unstretched length times the percentage strain (' + t + ' cm here), at the manual speed. The encoder is zeroed first. Press Reach again to go back to the initial position. While it moves, every button except Stop is locked.',
+        'Firmware: REACH mode. It moves until the glass-scale reading hits the target, then returns to Idle and the GUI unlocks. The button label flips between "Stretched" and "Initial".'],
+      auto: ["Auto mode ('x')", 'Runs the cyclic deformation by itself: the clamp oscillates between the initial and stretched positions at ' + a + ' cm/s (2 × length × strain × frequency), counts the cycles, and the GUI records the graphs. It stops after the set number of cycles, or when you press Auto again.',
+        'Firmware: AUTO state machine with MOVING_FORWARD and MOVING_BACKWARD states, switching direction when the glass-scale position reaches each end. The cycle count rises once per full stretch and return.'],
+      config: ["Applying configuration ('c')", 'The GUI sends the length, strain, speeds, accelerations, frequency and cycle count to the ESP32, which recalculates the target distance and the derived Auto speed. The buttons lock briefly while the values are sent.',
+        'Firmware: CONFIG mode reads each value from the serial port in turn, then returns to Idle. Graph data is cleared.']
+    };
+    return D[m] || D.idle;
+  }
+  function describeMode(m) {
+    var d = mdesc(m);
+    $('d-mode-title').textContent = d[0]; $('d-mode-text').textContent = d[1]; $('d-mode-fw').textContent = d[2];
+  }
+  function act(title, text) { $('d-act').innerHTML = ''; var b = document.createElement('b'); b.textContent = 'Last action: ' + title + '. '; $('d-act').appendChild(b); $('d-act').appendChild(document.createTextNode(text)); }
+  var flash = {t: 0, txt: ''};
+
+  var rig = {};
+  ['rg-mode', 'rg-rec', 'rg-cyc', 'rg-screw', 'rg-shaft', 'rg-fbar', 'rg-f', 'rg-g0', 'rg-g0t', 'rg-g1', 'rg-g1t', 'rg-film', 'rg-elec', 'rg-grid', 'rg-mv', 'rg-x', 'rg-x2', 'rg-dir', 'rg-step', 'rg-lab', 'rg-ghosts'].forEach(function (id) { rig[id] = $(id); });
+  var gridLines = [];
+  (function () {
+    for (var i = 1; i < 8; i++) { var ln = document.createElementNS('http://www.w3.org/2000/svg', 'line'); ln.setAttribute('stroke', '#fff'); ln.setAttribute('stroke-opacity', '0.4'); ln.setAttribute('stroke-width', '1'); rig['rg-grid'].appendChild(ln); gridLines.push(ln); }
+  })();
+  var MODE_NAME = {idle: 'Idle', manual: 'Step', jog: 'Jog', reach: 'Reach', auto: 'Auto', config: 'Applying config'};
+  function drawRig() {
+    var X0 = 126, L = cfg.L, Tt = T(), k = Math.min(15, 340 / (L + Math.max(Tt, 4) + 1)), x = S.x, len = (L + x) * k, lam = (L + x) / L;
+    var h0 = 46, h = h0 / Math.sqrt(Math.max(lam, 0.2)), cy = 70, i;
+    var f = S.conn ? (S.raw - S.tare) : 0, mvx = X0 + len;
+    rig['rg-film'].setAttribute('x', X0); rig['rg-film'].setAttribute('y', (cy - h / 2).toFixed(1)); rig['rg-film'].setAttribute('width', len.toFixed(1)); rig['rg-film'].setAttribute('height', h.toFixed(1));
+    rig['rg-film'].setAttribute('fill-opacity', (0.28 + Math.min(0.4, Math.max(0, x / L) * 1.4)).toFixed(2));
+    var m = 0.12 * len, v = 0.14 * h;
+    rig['rg-elec'].setAttribute('x', (X0 + m).toFixed(1)); rig['rg-elec'].setAttribute('y', (cy - h / 2 + v).toFixed(1)); rig['rg-elec'].setAttribute('width', Math.max(0, len - 2 * m).toFixed(1)); rig['rg-elec'].setAttribute('height', Math.max(0, h - 2 * v).toFixed(1));
+    for (i = 0; i < gridLines.length; i++) { var gx = X0 + len * (i + 1) / 8; gridLines[i].setAttribute('x1', gx.toFixed(1)); gridLines[i].setAttribute('x2', gx.toFixed(1)); gridLines[i].setAttribute('y1', (cy - h / 2 + 1).toFixed(1)); gridLines[i].setAttribute('y2', (cy + h / 2 - 1).toFixed(1)); }
+    rig['rg-mv'].setAttribute('transform', 'translate(' + mvx.toFixed(1) + ' 0)');
+    rig['rg-x'].textContent = S.conn ? 'x = ' + x.toFixed(2) + ' cm' : ''; rig['rg-x2'].textContent = S.conn ? 'ε = ' + (x / L).toFixed(3) : '';
+    rig['rg-screw'].setAttribute('x', (140 + ((-x * k) % 9 + 9) % 9 - 9).toFixed(2)); rig['rg-screw'].setAttribute('width', 473);
+    var ang = x / 0.5 * 360; rig['rg-shaft'].setAttribute('transform', 'rotate(' + ang.toFixed(1) + ' 678 156)');
+    var bw = Math.max(0, Math.min(1, f / 0.4)) * 62; rig['rg-fbar'].setAttribute('width', bw.toFixed(1)); rig['rg-f'].textContent = S.conn ? 'F = ' + (Math.abs(f) < 0.0005 ? 0 : f).toFixed(3) + ' N' : '';
+    var g0 = X0 + L * k, g1 = X0 + (L + Tt) * k, ghost = (S.mode === 'reach' || S.mode === 'auto');
+    rig['rg-ghosts'].setAttribute('opacity', S.conn ? (ghost ? 1 : 0.35) : 0);
+    rig['rg-g0'].setAttribute('x1', g0); rig['rg-g0'].setAttribute('x2', g0); rig['rg-g0t'].setAttribute('x', g0);
+    rig['rg-g1'].setAttribute('x1', g1); rig['rg-g1'].setAttribute('x2', g1); rig['rg-g1t'].setAttribute('x', g1);
+    rig['rg-g1t'].textContent = ' stretched target (' + cfg.strain + '%)';
+    rig['rg-mode'].textContent = 'MODE: ' + (S.conn ? (MODE_NAME[S.mode] || 'Idle') : 'Disconnected');
+    rig['rg-rec'].style.display = S.rec ? '' : 'none';
+    rig['rg-cyc'].textContent = S.mode === 'auto' || (S.conn && S.cycles) ? 'Cycle ' + Math.min(S.cycles + (S.mode === 'auto' ? 1 : 0), cfg.cycles || 999) + (cfg.cycles ? ' of ' + cfg.cycles : '') + '  (' + S.cycles + ' done)' : '';
+    var dirTxt = '', dirX = 24, anc = 'start';
+    if (S.conn && Math.abs(S.v) > 0.01) { if (S.v > 0) { dirTxt = '▶▶'; } else { dirTxt = '◀◀'; dirX = -10; anc = 'end'; } }
+    rig['rg-dir'].textContent = dirTxt; rig['rg-dir'].setAttribute('x', dirX); rig['rg-dir'].setAttribute('text-anchor', anc);
+    var now = performance.now();
+    if (flash.txt && now - flash.t < 700) { rig['rg-step'].style.display = ''; rig['rg-step'].textContent = flash.txt; } else rig['rg-step'].style.display = 'none';
+    rig['rg-lab'].setAttribute('x', (X0 + len / 2).toFixed(1)); rig['rg-lab'].setAttribute('y', (cy + h / 2 + 14).toFixed(1));
+  }
+
+  function fresh() {
+    return {conn: false, lock: 0, mode: 'idle', next: 'stretched', x: 0, v: 0, stepTarget: 0, jogDir: 0, reachTarget: 0, autoDir: 1,
+      cycles: 0, rec: false, hasData: false, d: {time: [], strain: [], stress: [], force: [], speed: [], disp: []},
+      simT: 0, recT0: 0, tickAcc: 0, tare: 0, raw: 0, tel: null, startLabel: '--:--:--', pausedAt: 0,
+      f: {conn: 0, step: 0, tare: 0, apply: 0, reach: 0, auto: 0, csv: 0}};
+  }
+  function defaults() { return {L: 15, strain: 25, area: 2, freq: 0.2, cycles: 3, unl: false, mspd: 400, macc: 400, aacc: 4000}; }
+
+  function log(s) {
+    var o = $('d-out'); o.textContent += s + '\n';
+    var l = o.textContent.split('\n'); if (l.length > 80) o.textContent = l.slice(-60).join('\n');
+    o.scrollTop = o.scrollHeight;
+  }
+  function later(fn, ms) { var id = setTimeout(fn, ms); timers.push(id); }
+  function T() { return cfg.L * cfg.strain / 100; }
+  function manCm() { return cfg.mspd / STEPS_PER_CM; }
+  function autoCm() { return 2 * cfg.L * (cfg.strain / 100) * cfg.freq; }
+
+  function clearGraph() { for (var k in S.d) S.d[k] = []; S.hasData = false; S.rec = false; }
+  function setTel(vals) {
+    var b = $('d-tel').getElementsByTagName('b');
+    for (var i = 0; i < 6; i++) b[i].textContent = vals ? vals[i] : '--';
+  }
+  function setMode(m) {
+    S.mode = m;
+    ['manual', 'jog', 'reach', 'auto'].forEach(function (k) { $('mb-' + k).className = 'mb' + (k === m ? ' on' : ''); });
+    if (m === 'manual' || m === 'jog' || m === 'reach' || m === 'config') clearGraph();
+    describeMode(m);
+  }
+  function reachLabel() { $('b-p').textContent = S.next === 'stretched' ? "Reach: → Stretched ('p')" : "Reach: → Initial ('p')"; }
+
+  var ACT = ['d-config', 'b-m', 'b-j', 'b-p', 'b-a', 'b-d', 'b-s', 'b-r', 'b-z', 'b-t', 'b-x'];
+  function refresh() {
+    ACT.forEach(function (id) {
+      var dis = !S.conn || S.lock === 2 || (S.lock === 1 && id !== 'b-s');
+      $(id).disabled = dis;
+    });
+    $('d-connect').textContent = S.conn ? 'Disconnect' : 'Connect';
+    $('d-refresh').disabled = S.conn;
+    $('d-csv').disabled = !S.hasData;
+    $('d-start').textContent = 'Recording start time: ' + S.startLabel;
+    reachLabel();
+    hint();
+  }
+
+  function dirty() {
+    var c = readFields(); if (!c) return false;
+    return ['L', 'strain', 'area', 'freq', 'cycles', 'mspd', 'macc', 'aacc', 'unl'].some(function (k) { return c[k] !== cfg[k]; });
+  }
+  function hint() {
+    var el = $('d-hint'), f = S.f, id = null, txt;
+    if (!S.conn) { id = 'd-connect'; txt = 'Disconnected, so everything is locked, as in the real GUI. Click Connect to carry on.'; }
+    else if (S.lock === 2 || S.lock === 1) { txt = S.mode === 'reach' ? 'Reach is running: only Stop is available until it arrives, as in the real GUI.' : 'Applying settings\u2026'; }
+    else if (dirty()) { id = 'd-config'; txt = 'You have changed some settings. Press Apply Configuration to use them, or leave them and the defaults stay in force.'; }
+    else if (!f.step) { id = 'b-m'; txt = "The simulated ESP32 is already connected, so everything is live. Try Step ('m') and nudge the clamp with 'a' / 'd'. Changing the settings is optional."; }
+    else if (!f.tare) { id = 'b-t'; txt = "Press Tare Load Cell ('t') so the slack sample reads zero force."; }
+    else if (!f.reach) { id = 'b-p'; txt = "Press Reach ('p') to move the clamp to the stretched position. (Optionally change the settings first and press Apply Configuration.)"; }
+    else if (!f.auto) { id = 'b-x'; txt = "Press Auto ('x') to run the cyclic test, and open some graphs with the Show buttons."; }
+    else if (!f.csv) { id = 'd-csv'; txt = 'Run finished or stopped? Press Save Graph Data to CSV. Try Jog too, or change the strain or area, Apply, and run again.'; }
+    else { txt = 'That is the whole workflow. Experiment freely, or press Reset demo to start again.'; }
+    $('d-hint').style.display = hintsOn ? '' : 'none';
+    tk.querySelectorAll('.hint-on').forEach(function (n) { n.classList.remove('hint-on'); });
+    if (hintsOn && id && !$(id).disabled) $(id).classList.add('hint-on');
+    el.textContent = txt;
+  }
+
+  function readFields() {
+    var L = parseFloat($('f-len').value), st = parseFloat($('f-strain').value);
+    if (isNaN(L) || isNaN(st) || L <= 0) return null;
+    var a = parseFloat($('f-area').value); if (isNaN(a) || a <= 0) a = 1;
+    var fr = parseFloat($('f-freq').value), ms = parseFloat($('f-mspd').value), ma = parseFloat($('f-macc').value), aa = parseFloat($('f-aacc').value), cy = parseInt($('f-cyc').value, 10);
+    return {L: L, strain: st, area: a, freq: isNaN(fr) || fr <= 0 ? 0.2 : fr, mspd: isNaN(ms) || ms <= 0 ? 400 : ms, macc: isNaN(ma) ? 400 : ma, aacc: isNaN(aa) ? 4000 : aa,
+      unl: $('f-unl').checked, cycles: $('f-unl').checked ? 0 : (isNaN(cy) || cy < 0 ? 10 : cy)};
+  }
+  function parse() {
+    var L = parseFloat($('f-len').value), st = parseFloat($('f-strain').value);
+    if (isNaN(L) || isNaN(st) || L <= 0) { log('Invalid inputs for Length or Strain.'); return null; }
+    var a = parseFloat($('f-area').value);
+    if (isNaN(a) || a <= 0) log('Invalid Area value (must be > 0). Falling back to 1.0 mm\u00b2.');
+    return readFields();
+  }
+  function applyConfig(first) {
+    var c = parse(); if (!c) return;
+    cfg = c; S.f.apply = S.f.apply || (first ? 0 : 1);
+    setMode('config'); S.v = 0; S.jogDir = 0; S.next = 'stretched'; S.lock = 2; refresh();
+    log('[CONFIGURATION MODE]');
+    later(function () {
+      setMode('idle'); S.lock = 0;
+      log('ESP32 Connected');
+      if (!first) {
+        log('--- New Parameters Set ---');
+        log('Length: ' + c.L + ' cm'); log('Strain: ' + c.strain + ' %'); log('Target Dist: ' + T().toFixed(4) + ' cm'); log('Frequency: ' + c.freq + ' Hz');
+        log('Auto Speed (derived): ' + (2 * STEPS_PER_CM * c.L * (c.strain / 100) * c.freq).toFixed(2) + ' Hz');
+        log('Manual -> Speed: ' + c.mspd + ' Hz, Accel: ' + c.macc); log('Auto   -> Accel: ' + c.aacc);
+        log('Target Cycles: ' + (c.cycles === 0 ? 'unlimited' : c.cycles)); log('---------------------------');
+        log("Exiting Config Mode. Press 'x' Auto, 'm' Manual, 'j' Jog, 'p' Reach.");
+      }
+      refresh();
+    }, 1200);
+  }
+
+  function connectToggle() {
+    if (!S.conn) {
+      S.conn = true; S.f.conn = 1; S.lock = 0; log('Connecting...'); refresh();
+      act('Connect', 'Opened the serial port (115200 baud) to the ESP32. The GUI then zeroes the encoder, tares the load cell and sends the configuration, and unlocks the controls.');
+      later(function () {
+        if (!S.conn) return;
+        var c = readFields(); if (c) cfg = c;
+        S.x = 0; S.stepTarget = 0; log('Encoder count reset to 0.'); log('Load Cell Tared.'); S.tare = S.raw; log('ESP32 Connected'); refresh();
+      }, 600);
+    } else {
+      if (S.mode === 'auto' || S.mode === 'manual' || S.mode === 'jog') log('(stop command sent)');
+      timers.forEach(clearTimeout); timers = [];
+      S.conn = false; S.lock = 2; S.v = 0; S.jogDir = 0; S.rec = false; setMode('idle'); S.next = 'stretched'; setTel(null);
+      log('Disconnected.'); act('Disconnect', 'Stopped any running mode, closed the serial port and locked the controls. Telemetry clears.'); refresh();
+    }
+  }
+
+  function press(ch) {
+    if (!S.conn) return;
+    var cdm = S.mode;
+    if (ch === 'c') { applyConfig(false); return; }
+    if (ch === 'p') {
+      S.lock = 1; S.f.reach = 1; setMode('reach'); S.v = 0;
+      if (S.next === 'stretched') { S.x = 0; S.reachTarget = T(); log('Encoder count reset to 0.'); log('Reach Mode: Moving to stretched position.'); S.next = 'unstretched'; }
+      else { S.reachTarget = 0; log('Reach Mode: Moving to initial position.'); S.next = 'stretched'; }
+    } else if (ch === 's') {
+      if (cdm === 'reach') { setMode('idle'); S.v = 0; log('Reach Mode cancelled. System Idle.'); }
+      S.jogDir = 0; S.v = 0; S.lock = 0; S.next = 'unstretched';
+    } else if (ch === 'x') {
+      if (cdm !== 'auto') {
+        if (S.cycles >= cfg.cycles && cfg.cycles > 0) S.cycles = 0;
+        setMode('auto'); S.f.auto = 1; S.jogDir = 0;
+        if (S.next === 'stretched') { S.x = 0; S.autoDir = 1; } else S.autoDir = -1;
+        S.d = {time: [], strain: [], stress: [], force: [], speed: [], disp: []}; S.hasData = false; S.rec = true; S.recT0 = S.simT;
+        var n = new Date(); S.startLabel = [n.getHours(), n.getMinutes(), n.getSeconds()].map(function (v) { return (v < 10 ? '0' : '') + v; }).join(':');
+        log('Auto Mode ON. Motor oscillating.');
+      } else { setMode('idle'); S.v = 0; S.rec = false; S.next = 'unstretched'; log('Auto Mode OFF. System Idle.'); }
+    } else if (ch === 'm') {
+      S.next = 'stretched'; S.f.step = 1; S.jogDir = 0;
+      if (cdm !== 'manual') { setMode('manual'); S.stepTarget = S.x; S.cycles = 0; log("Step-Manual Mode ON. Use 'a'/'d' to step."); }
+      else { setMode('idle'); S.v = 0; log('Manual Mode OFF. System Idle.'); }
+    } else if (ch === 'j') {
+      S.next = 'stretched'; S.stepTarget = S.x;
+      if (cdm !== 'jog') { setMode('jog'); S.cycles = 0; S.jogDir = 0; log("Jog Mode ON. 'a' backward, 'd' forward, 's' stop."); }
+      else { setMode('idle'); S.jogDir = 0; S.v = 0; log('Jog Mode OFF. System Idle.'); }
+    } else if (ch === 'a' || ch === 'd') {
+      var dir = ch === 'd' ? 1 : -1;
+      if (cdm === 'manual') S.stepTarget += dir * STEP_CM;
+      else if (cdm === 'jog') S.jogDir = dir;
+    } else if (ch === 'r') { S.x = 0; S.stepTarget = 0; log('Encoder count reset to 0.'); }
+    else if (ch === 'z') { S.cycles = 0; log('Cycle count reset to 0.'); }
+    else if (ch === 't') { S.tare = S.raw; S.f.tare = 1; log('Load Cell Tared. New offset: ' + (48704 + Math.round(S.raw * 8000)).toFixed(2)); }
+    var ST = (STEP_CM * 10).toFixed(1);
+    var AD = {
+      c: ["Apply Configuration ('c')", 'Sent the settings to the firmware, which recalculated the target distance (' + T().toFixed(2) + ' cm) and the derived Auto speed.'],
+      s: ["Stop Jog or Reach ('s')", 'Halts the motor, cancels a Reach in progress and unlocks the buttons. The Reach label now offers the initial position.'],
+      r: ["Reset Encoder ('r')", 'Zeroed the glass-scale count, so displacement and strain read 0 from the clamp\'s current position.'],
+      t: ["Tare Load Cell ('t')", 'Made the present load-cell reading the zero-force reference. Do this with the sample slack, before stretching.'],
+      z: ["Reset Cycles ('z')", 'Set the cycle counter back to zero.']
+    };
+    if (AD[ch]) act(AD[ch][0], AD[ch][1]);
+    else if (ch === 'a' || ch === 'd') {
+      var dn = ch === 'd' ? 'Forward' : 'Backward';
+      if (cdm === 'manual') { act(dn + " ('" + ch + "')", 'Moved the clamp one step of 50 motor steps (about ' + ST + ' mm) ' + (ch === 'd' ? 'away from the load cell' : 'towards the load cell') + '.'); flash = {t: performance.now(), txt: (ch === 'd' ? '+' : '−') + ST + ' mm'}; }
+      else if (cdm === 'jog') act(dn + " ('" + ch + "')", 'Started running the motor continuously ' + (ch === 'd' ? 'forward' : 'backward') + ' until you press Stop.');
+      else act(dn + " ('" + ch + "')", 'No effect: Backward and Forward only work in Step and Jog modes.');
+    } else if (ch === 'm' || ch === 'j' || ch === 'p' || ch === 'x') {
+      var nm = {m: 'Step', j: 'Jog', p: 'Reach', x: 'Auto'}[ch];
+      act(nm + " ('" + ch + "')", S.mode === 'idle' ? 'Left the mode and returned to Idle.' : 'Entered ' + nm + ' mode (described above). Green border = active mode.');
+    }
+    refresh();
+  }
+
+  function sigma(x, v) {
+    var e = x / cfg.L; if (x <= 0) return 0;
+    return Math.max(E * e * (1 + 3 * e) + 0.12 * (v / cfg.L), 0);
+  }
+
+  function step(dt) {
+    var m = S.mode, mc = manCm(), dx, mv;
+    if (!S.conn) return;
+    if (m === 'manual') { dx = S.stepTarget - S.x; mv = Math.min(Math.abs(dx), mc * dt); S.x += (dx >= 0 ? 1 : -1) * mv; S.v = mv > 0 ? (dx >= 0 ? 1 : -1) * mv / dt : 0; }
+    else if (m === 'jog') { S.v = S.jogDir * mc; S.x = Math.max(-1, Math.min(8, S.x + S.v * dt)); }
+    else if (m === 'reach') {
+      dx = S.reachTarget - S.x; mv = mc * dt;
+      if (Math.abs(dx) <= mv) { S.x = S.reachTarget; S.v = 0; setMode('idle'); S.lock = 0; log('Reach Mode: Reached target position. System Idle.'); refresh(); }
+      else { S.v = (dx > 0 ? 1 : -1) * mc; S.x += S.v * dt; }
+    } else if (m === 'auto') {
+      S.v = S.autoDir * autoCm(); S.x += S.v * dt;
+      var done = false;
+      if (S.autoDir > 0 && S.x >= T()) { S.x = T(); if (S.next === 'unstretched') { S.cycles++; done = cfg.cycles > 0 && S.cycles >= cfg.cycles; } S.autoDir = -1; }
+      else if (S.autoDir < 0 && S.x <= 0) { S.x = 0; if (S.next === 'stretched') { S.cycles++; done = cfg.cycles > 0 && S.cycles >= cfg.cycles; } S.autoDir = 1; }
+      if (done) { setMode('idle'); S.v = 0; S.rec = false; S.next = 'unstretched'; log('Target cycle count reached. Auto Mode OFF. System Idle.'); refresh(); }
+    } else S.v = 0;
+  }
+
+  function tick() {
+    var force = sigma(S.x, S.v) * SIM_AREA + (Math.random() - 0.5) * 0.0006;
+    S.raw = force; var f = force - S.tare, strain = S.x / cfg.L, stress = f / cfg.area, spd = S.v * 600;
+    var z3 = function (v) { return (Math.abs(v) < 0.0005 ? 0 : v).toFixed(3); }, z4 = function (v) { return (Math.abs(v) < 0.00005 ? 0 : v).toFixed(4); };
+    setTel([S.x.toFixed(3), strain.toFixed(4), z3(f), z4(stress), spd.toFixed(1), String(S.cycles)]);
+    if (S.rec) {
+      var d = S.d; d.time.push(S.simT - S.recT0); d.strain.push(strain); d.stress.push(stress); d.force.push(f); d.speed.push(spd); d.disp.push(S.x);
+      if (!S.hasData) { S.hasData = true; $('d-csv').disabled = false; }
+    }
+  }
+
+  function niceTicks(lo, hi, n) {
+    var span = hi - lo; if (span <= 0) span = 1;
+    var raw = span / n, mag = Math.pow(10, Math.floor(Math.log10(raw))), m = raw / mag, stp = (m < 1.5 ? 1 : m < 3 ? 2 : m < 7 ? 5 : 10) * mag, out = [];
+    for (var v = Math.ceil(lo / stp - 1e-9) * stp; v <= hi + stp * 1e-6; v += stp) out.push(v);
+    return {t: out, s: stp};
+  }
+  function fmt(v, stp) { var dd = Math.max(0, Math.min(4, -Math.floor(Math.log10(stp) + 1e-9))); return v.toFixed(dd); }
+  function plotSvg(n) {
+    var F = FIGS[n], xs = S.d[F.x === 'time' ? 'time' : F.x], ys = S.d[F.y], W = 300, H = 190, l = 46, r = 10, t = 22, b = 34, i;
+    var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + F.t + '">';
+    s += '<text x="' + W / 2 + '" y="14" text-anchor="middle" font-size="11" font-weight="600" fill="#222">' + F.t + '</text>';
+    var xa = [0, 1], ya = [0, 1];
+    if (xs.length) {
+      var w = xs.slice(-300), q = ys.slice(-300), xmn = Math.min.apply(null, w), xmx = Math.max.apply(null, w), ymn = Math.min.apply(null, q), ymx = Math.max.apply(null, q);
+      if (xmx === xmn) xmx = xmn + 1; var pad = (ymx - ymn) * 0.1 || 0.05; xa = [xmn, xmx]; ya = [ymn - pad, ymx + pad];
+      var xt = niceTicks(xa[0], xa[1], 5), yt = niceTicks(ya[0], ya[1], 5);
+      var X = function (v) { return l + (v - xa[0]) / (xa[1] - xa[0]) * (W - l - r); }, Y = function (v) { return H - b - (v - ya[0]) / (ya[1] - ya[0]) * (H - t - b); };
+      xt.t.forEach(function (v) { s += '<line x1="' + X(v) + '" y1="' + t + '" x2="' + X(v) + '" y2="' + (H - b) + '" stroke="#ddd"/><text x="' + X(v) + '" y="' + (H - b + 11) + '" text-anchor="middle" font-size="8.5" fill="#444">' + fmt(v, xt.s) + '</text>'; });
+      yt.t.forEach(function (v) { s += '<line x1="' + l + '" y1="' + Y(v) + '" x2="' + (W - r) + '" y2="' + Y(v) + '" stroke="#ddd"/><text x="' + (l - 4) + '" y="' + (Y(v) + 3) + '" text-anchor="end" font-size="8.5" fill="#444">' + fmt(v, yt.s) + '</text>'; });
+      var d = ''; for (i = 0; i < w.length; i++) d += (i ? 'L' : 'M') + X(w[i]).toFixed(1) + ' ' + Y(q[i]).toFixed(1);
+      s += '<path d="' + d + '" fill="none" stroke="' + F.c + '" stroke-width="1.8"/>';
+    }
+    s += '<rect x="' + l + '" y="' + t + '" width="' + (W - l - r) + '" height="' + (H - t - b) + '" fill="none" stroke="#444"/>';
+    s += '<text x="' + (l + (W - l - r) / 2) + '" y="' + (H - 6) + '" text-anchor="middle" font-size="9.5" fill="#222">' + F.xl + '</text>';
+    s += '<text transform="translate(11 ' + (t + (H - t - b) / 2) + ') rotate(-90)" text-anchor="middle" font-size="9.5" fill="#222">' + F.yl + '</text>';
+    if (!xs.length) s += '<text x="' + W / 2 + '" y="' + H / 2 + '" text-anchor="middle" font-size="10" fill="#888">No data yet: run Auto mode</text>';
+    return s + '</svg>';
+  }
+  function drawPlots() {
+    var host = $('d-plots');
+    if (!openFigs.length) { host.innerHTML = '<p class="empty">Use the Show buttons in the Graph panel to open graph windows. The real GUI opens each one in its own window.</p>'; return; }
+    host.innerHTML = openFigs.map(function (n) { return '<div class="win"><div class="wt"><span>' + FIGS[n].t + '</span><button type="button" data-close="' + n + '" aria-label="Close ' + FIGS[n].t + '">×</button></div>' + plotSvg(n) + '</div>'; }).join('');
+  }
+
+  function bind(id, ch) { $(id).addEventListener('click', function () { press(ch); }); }
+  bind('b-m', 'm'); bind('b-j', 'j'); bind('b-p', 'p'); bind('b-x', 'x'); bind('b-a', 'a'); bind('b-d', 'd'); bind('b-s', 's'); bind('b-r', 'r'); bind('b-z', 'z'); bind('b-t', 't');
+  $('d-config').addEventListener('click', function () { press('c'); });
+  $('d-connect').addEventListener('click', connectToggle);
+  $('d-refresh').addEventListener('click', function () { log('Ports refreshed (demo).'); act('Refresh', 'Rescans the available COM ports. Disabled while connected.'); });
+  $('d-csv').addEventListener('click', function () { S.f.csv = 1; act('Save Graph Data to CSV', 'In the real GUI this writes the run (settings, timestamps, force, displacement, speed) to a CSV for stress-strain analysis. Nothing is saved here.'); log('--> Demo only: the real GUI writes a CSV here with the settings, timestamps, force and displacement.'); hint(); });
+  tk.querySelectorAll('[data-fig]').forEach(function (b) {
+    b.addEventListener('click', function () { var n = +b.getAttribute('data-fig'); if (openFigs.indexOf(n) < 0) openFigs.push(n); act('Show: ' + FIGS[n].t, 'Opened a live graph window (below). The real GUI opens each graph as its own window. Graphs only record while Auto mode runs.'); drawPlots(); });
+  });
+  $('d-plots').addEventListener('click', function (e) {
+    var n = e.target.getAttribute && e.target.getAttribute('data-close'); if (!n) return;
+    openFigs = openFigs.filter(function (v) { return v !== +n; }); drawPlots();
+  });
+  tk.addEventListener('keydown', function (e) {
+    var tg = e.target.tagName; if (tg === 'INPUT' || tg === 'SELECT' || e.ctrlKey || e.metaKey || e.altKey) return;
+    var k = e.key.toLowerCase();
+    if ('mxjadsrtzpc'.indexOf(k) < 0 || k.length !== 1) return;
+    var map = {m: 'b-m', x: 'b-x', j: 'b-j', a: 'b-a', d: 'b-d', s: 'b-s', r: 'b-r', t: 'b-t', z: 'b-z', p: 'b-p', c: 'd-config'};
+    if (!S.conn || $(map[k]).disabled) return;
+    e.preventDefault(); press(k);
+  });
+  document.querySelectorAll('[data-spd]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      speedMult = +b.getAttribute('data-spd');
+      document.querySelectorAll('[data-spd]').forEach(function (o) { o.setAttribute('aria-pressed', o === b ? 'true' : 'false'); });
+    });
+  });
+  $('d-hints').addEventListener('click', function () { hintsOn = !hintsOn; this.setAttribute('aria-pressed', hintsOn); this.textContent = hintsOn ? 'Hints on' : 'Hints off'; hint(); });
+  $('d-reset').addEventListener('click', function () { init(); });
+  ['f-len', 'f-strain', 'f-mspd', 'f-area', 'f-freq', 'f-macc', 'f-cyc', 'f-aacc', 'f-unl'].forEach(function (id) { $(id).addEventListener('input', hint); $(id).addEventListener('change', hint); });
+
+  function init() {
+    timers.forEach(clearTimeout); timers = [];
+    S = fresh(); cfg = defaults(); lastTs = null;
+    $('d-out').textContent = ''; setMode('idle'); setTel(null);
+    ['f-len', 'f-strain', 'f-mspd', 'f-area', 'f-freq', 'f-macc', 'f-cyc', 'f-aacc'].forEach(function (id, i) { $(id).value = ['15.0', '25.0', '400', '2.0', '0.2', '400', '3', '4000'][i]; });
+    $('f-unl').checked = false; S.conn = true; S.f.conn = 1; S.lock = 0; $('d-act').textContent = ''; describeMode('idle');
+    log('Connected to /dev/ttyUSB0 (demo).'); log('ESP32 Connected'); refresh(); drawPlots();
+  }
+  var lastDraw = 0;
+  function frame(ts) {
+    if (lastTs === null) lastTs = ts;
+    var dt = Math.min((ts - lastTs) / 1000, 0.05) * speedMult; lastTs = ts;
+    if (visible && S.conn) {
+      var rem = dt, h;
+      while (rem > 1e-9) {
+        h = Math.min(rem, 0.02); rem -= h; S.simT += h; step(h);
+        S.tickAcc += h; if (S.tickAcc >= 0.1) { S.tickAcc -= 0.1; tick(); }
+      }
+      if (ts - lastDraw > 80) { lastDraw = ts; drawPlots(); }
+    }
+    if (visible) drawRig();
+    requestAnimationFrame(frame);
+  }
+  if ('IntersectionObserver' in window) new IntersectionObserver(function (e) { visible = e[0].isIntersecting; }).observe($('demo'));
+  init(); openFigs = [6, 3]; drawPlots(); requestAnimationFrame(frame);
 })();
 </script>
 </body>
