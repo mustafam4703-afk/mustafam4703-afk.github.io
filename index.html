@@ -218,6 +218,8 @@
   @media (prefers-reduced-motion: no-preference) { .tk .hint-on { animation: hintpulse 1.4s ease-in-out infinite; } }
   @keyframes hintpulse { 0%, 100% { outline-color: #0B6F6A; } 50% { outline-color: rgba(11,111,106,.25); } }
   .demo-plots { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px; margin-top: 12px; }
+  .demo-plots:empty { display: none; }
+  .tk button[aria-pressed="true"] { background: #cfe3e0; border-color: #0B6F6A; }
   .demo-plots .win { background: #fff; border: 1px solid #8f8f8f; border-radius: 4px; overflow: hidden; }
   .demo-plots .wt { display: flex; justify-content: space-between; align-items: center; background: #d9d9d9; font: 600 11px "DejaVu Sans", Verdana, sans-serif; padding: 2px 6px; color: #333; }
   .demo-plots .wt button { border: 0; background: transparent; font-size: 14px; line-height: 1; cursor: pointer; color: #333; padding: 0 2px; }
@@ -744,7 +746,7 @@
       <li><a href="cv.pdf">CV (PDF)</a></li>
     </ul>
     <div class="ack">
-      <p><strong>Acknowledgements.</strong> Diagrams and text are my own. Fonts: Archivo and Source Serif 4, licensed under the SIL Open Font License and served by Google Fonts. ROS, Gazebo, Renishaw and Leo Rover are names of their respective owners and are used only to describe my work. Layout and copy were drafted with AI assistance (Claude, Anthropic), as permitted for this coursework.</p>
+      <p><strong>Acknowledgements.</strong> The diagrams and animated figures (including the rig drawing and the interactive GUI simulation) were created for this page with AI assistance (Claude, Anthropic) as SVG and JavaScript, based on my project reports, my own GUI and firmware, and my descriptions; they are not my own artwork and are illustrative, not to scale. The projects, software and findings they describe are my own work. Fonts: Archivo and Source Serif 4, licensed under the SIL Open Font License and served by Google Fonts. ROS, Gazebo, Renishaw and Leo Rover are names of their respective owners and are used only to describe my work. The layout and page text were also drafted with AI assistance, as permitted for this coursework.</p>
       <p>Created for AERO62520 Robotic Systems Design Project, University of Manchester.</p>
     </div>
   </div>
@@ -1063,7 +1065,7 @@
     else if (!f.step) { id = 'b-m'; txt = "The simulated ESP32 is already connected, so everything is live. Try Step ('m') and nudge the clamp with 'a' / 'd'. Changing the settings is optional."; }
     else if (!f.tare) { id = 'b-t'; txt = "Press Tare Load Cell ('t') so the slack sample reads zero force."; }
     else if (!f.reach) { id = 'b-p'; txt = "Press Reach ('p') to move the clamp to the stretched position. (Optionally change the settings first and press Apply Configuration.)"; }
-    else if (!f.auto) { id = 'b-x'; txt = "Press Auto ('x') to run the cyclic test, and open some graphs with the Show buttons."; }
+    else if (!f.auto) { id = 'b-x'; txt = "Press Auto ('x') to run the cyclic test, and click the Show buttons to open any of the six graphs."; }
     else if (!f.csv) { id = 'd-csv'; txt = 'Run finished or stopped? Press Save Graph Data to CSV. Try Jog too, or change the strain or area, Apply, and run again.'; }
     else { txt = 'That is the whole workflow. Experiment freely, or press Reset demo to start again.'; }
     $('d-hint').style.display = hintsOn ? '' : 'none';
@@ -1242,10 +1244,22 @@
     if (!xs.length) s += '<text x="' + W / 2 + '" y="' + H / 2 + '" text-anchor="middle" font-size="10" fill="#888">No data yet: run Auto mode</text>';
     return s + '</svg>';
   }
+  var wins = {};
   function drawPlots() {
-    var host = $('d-plots');
-    if (!openFigs.length) { host.innerHTML = '<p class="empty">Use the Show buttons in the Graph panel to open graph windows. The real GUI opens each one in its own window.</p>'; return; }
-    host.innerHTML = openFigs.map(function (n) { return '<div class="win"><div class="wt"><span>' + FIGS[n].t + '</span><button type="button" data-close="' + n + '" aria-label="Close ' + FIGS[n].t + '">×</button></div>' + plotSvg(n) + '</div>'; }).join('');
+    var host = $('d-plots'), i, n, w;
+    tk.querySelectorAll('[data-fig]').forEach(function (b) { b.setAttribute('aria-pressed', openFigs.indexOf(+b.getAttribute('data-fig')) >= 0 ? 'true' : 'false'); });
+    for (n in wins) { if (openFigs.indexOf(+n) < 0) { host.removeChild(wins[n].el); delete wins[n]; } }
+    for (i = 0; i < openFigs.length; i++) {
+      n = openFigs[i];
+      if (!wins[n]) {
+        var el = document.createElement('div'); el.className = 'win';
+        el.innerHTML = '<div class="wt"><span>' + FIGS[n].t + '</span><button type="button" data-close="' + n + '" aria-label="Close ' + FIGS[n].t + '">\u00d7</button></div><div class="pv"></div>';
+        wins[n] = {el: el, pv: el.querySelector('.pv')};
+      }
+      w = wins[n];
+      if (host.children[i] !== w.el) host.insertBefore(w.el, host.children[i] || null);
+      w.pv.innerHTML = plotSvg(n);
+    }
   }
 
   function bind(id, ch) { $(id).addEventListener('click', function () { press(ch); }); }
@@ -1255,7 +1269,10 @@
   $('d-refresh').addEventListener('click', function () { log('Ports refreshed (demo).'); act('Refresh', 'Rescans the available COM ports. Disabled while connected.'); });
   $('d-csv').addEventListener('click', function () { S.f.csv = 1; act('Save Graph Data to CSV', 'In the real GUI this writes the run (settings, timestamps, force, displacement, speed) to a CSV for stress-strain analysis. Nothing is saved here.'); log('--> Demo only: the real GUI writes a CSV here with the settings, timestamps, force and displacement.'); hint(); });
   tk.querySelectorAll('[data-fig]').forEach(function (b) {
-    b.addEventListener('click', function () { var n = +b.getAttribute('data-fig'); if (openFigs.indexOf(n) < 0) openFigs.push(n); act('Show: ' + FIGS[n].t, 'Opened a live graph window (below). The real GUI opens each graph as its own window. Graphs only record while Auto mode runs.'); drawPlots(); });
+    b.addEventListener('click', function () { var n = +b.getAttribute('data-fig'), at = openFigs.indexOf(n);
+      if (at < 0) { openFigs.push(n); act('Show: ' + FIGS[n].t, 'Opened a live graph window (below). The real GUI opens each graph as its own window. Graphs only record while Auto mode runs.'); }
+      else { openFigs.splice(at, 1); act('Show: ' + FIGS[n].t, 'Closed that graph window. Click the button again to reopen it.'); }
+      drawPlots(); });
   });
   $('d-plots').addEventListener('click', function (e) {
     var n = e.target.getAttribute && e.target.getAttribute('data-close'); if (!n) return;
@@ -1284,7 +1301,7 @@
     S = fresh(); cfg = defaults(); lastTs = null;
     $('d-out').textContent = ''; setMode('idle'); setTel(null);
     ['f-len', 'f-strain', 'f-mspd', 'f-area', 'f-freq', 'f-macc', 'f-cyc', 'f-aacc'].forEach(function (id, i) { $(id).value = ['15.0', '25.0', '400', '2.0', '0.2', '400', '3', '4000'][i]; });
-    $('f-unl').checked = false; S.conn = true; S.f.conn = 1; S.lock = 0; $('d-act').textContent = ''; describeMode('idle');
+    openFigs = []; $('f-unl').checked = false; S.conn = true; S.f.conn = 1; S.lock = 0; $('d-act').textContent = ''; describeMode('idle');
     log('Connected to /dev/ttyUSB0 (demo).'); log('ESP32 Connected'); refresh(); drawPlots();
   }
   var lastDraw = 0;
@@ -1303,7 +1320,7 @@
     requestAnimationFrame(frame);
   }
   if ('IntersectionObserver' in window) new IntersectionObserver(function (e) { visible = e[0].isIntersecting; }).observe($('demo'));
-  init(); openFigs = [6, 3]; drawPlots(); requestAnimationFrame(frame);
+  init(); requestAnimationFrame(frame);
 })();
 </script>
 </body>
